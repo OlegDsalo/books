@@ -74,4 +74,7 @@ export class DashboardComponent {
   searchBooks() {
     this.books = this.bookService.searchBooks(this.searchQuery);
   }
+  handleImageError(event: any) {
+    event.target.src = 'default_book.jpeg';
+  }
 }

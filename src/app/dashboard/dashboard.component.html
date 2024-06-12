@@ -14,11 +14,7 @@
       <mat-card-header>
         <mat-card-title>{{ book.title }}</mat-card-title>
       </mat-card-header>
-      @if (book.image) {
-        <img class="card-img" src="{{book.image}}" alt="">
-      } @else {
-        <img class="card-img" src="default_book.jpeg" alt="">
-      }
+      <img class="card-img" [src]="book.image || 'default_book.jpeg'" alt="" (error)="handleImageError($event)">
       <mat-card-content>
         <mat-card-subtitle>Author:{{ book.author }}</mat-card-subtitle>
         <mat-card-subtitle>Year:{{ book.year }}</mat-card-subtitle>
