@@ -1,0 +1,39 @@
+<h3 class="title">Create New Book</h3>
+<form class="form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+    @if (bookForm.get('title')?.hasError('required')) {
+      <mat-error>Title is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput formControlName="author">
+    @if (bookForm.get('author')?.hasError('required')) {
+      <mat-error>Author is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Year</mat-label>
+    <input matInput formControlName="year" type="number">
+    @if (bookForm.get('year')?.hasError('required')) {
+      <mat-error>Year is <strong>required</strong></mat-error>
+    }
+    @if (bookForm.get('year')?.hasError('min')) {
+      <mat-error>Year min is <strong> 1900</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    @if (bookForm.get('description')?.hasError('required')) {
+      <mat-error>Description is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cover Image URL</mat-label>
+    <input matInput formControlName="image">
+  </mat-form-field>
+  <button mat-raised-button [disabled]="bookForm.invalid" color="primary" type="submit">Create</button>
+</form>

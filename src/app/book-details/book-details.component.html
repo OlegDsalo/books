@@ -1,0 +1,45 @@
+<h3 class="title">Book Details</h3>
+<form class="form" [formGroup]="bookForm">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+    @if (bookForm.get('title')?.hasError('required')) {
+      <mat-error>Title is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput formControlName="author">
+    @if (bookForm.get('author')?.hasError('required')) {
+      <mat-error>Author is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Year</mat-label>
+    <input type="number" matInput formControlName="year">
+    @if (bookForm.get('year')?.hasError('required')) {
+      <mat-error>Year is <strong>required</strong></mat-error>
+    }
+    @if (bookForm.get('year')?.hasError('min')) {
+      <mat-error>Year min is <strong> 1900</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description"/>
+    @if (bookForm.get('description')?.hasError('required')) {
+      <mat-error>Description is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Image</mat-label>
+    <input matInput formControlName="image">
+    @if (bookForm.get('image')?.hasError('required')) {
+      <mat-error>Image is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <div class="form-actions">
+    <button mat-raised-button [disabled]="bookForm.invalid" color="primary" (click)="save()">Save</button>
+    <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+  </div>
+</form>

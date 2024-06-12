@@ -1,0 +1,39 @@
+<div class="search">
+  <mat-form-field>
+    <input [(ngModel)]="searchQuery" (ngModelChange)="searchBooks()" matInput placeholder="Search book">
+    @if (searchQuery) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+</div>
+<div class="card-container">
+  @for (book of books; track book.id) {
+    <mat-card class="card" (click)="openBookDetails(book)" [@delete]>
+      <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+      </mat-card-header>
+      @if (book.image) {
+        <img class="card-img" src="{{book.image}}" alt="">
+      } @else {
+        <img class="card-img" src="default_book.jpeg" alt="">
+      }
+      <mat-card-content>
+        <mat-card-subtitle>Author:{{ book.author }}</mat-card-subtitle>
+        <mat-card-subtitle>Year:{{ book.year }}</mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-mini-fab color="primary" (click)="deleteBook(book.id); $event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @empty {
+    <div class="no-books-message">
+      <mat-icon>info</mat-icon>
+      <span>No books found. Please try a different search or add new books.</span>
+    </div>
+  }
+</div>
+

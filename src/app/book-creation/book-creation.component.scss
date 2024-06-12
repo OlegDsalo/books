@@ -1,0 +1,16 @@
+.form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  &-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+.title {
+  padding-left: 20px;
+}

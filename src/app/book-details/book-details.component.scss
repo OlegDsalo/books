@@ -1,0 +1,21 @@
+.form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+.mat-form-field {
+  margin-bottom: 16px;
+}
+
+.title {
+  padding-left: 20px;
+}
